@@ -49,7 +49,7 @@ sudo systemctl restart docker
 
 > 查看docker系统信息 ,输入 ` docker info ` ，如果从输出结果中看到了 registry mirror 刚配置的内容地址，说明配置成功。
 
-### 4.拉取镜像
+### 4.拉取镜像示例
 
 
 ```
@@ -63,5 +63,6 @@ docker pull nginx:1.27.0
 ---
 
 参考网页：
-[CentOS （使用 yum 进行安装）-阿里云开发者社区] https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.57e31b11mZMLg4
-[docker镜像加速地址（国内镜像源）] https://xuanyuan.me/blog/archives/1154?from=tencent
+* [CentOS （使用 yum 进行安装）-阿里云开发者社区](https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.57e31b11mZMLg4)
+
+* [docker镜像加速地址（国内镜像源）](https://xuanyuan.me/blog/archives/1154?from=tencent)
