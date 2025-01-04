@@ -3,8 +3,18 @@
 #### 1. 下载脚本
 下载install_docker.sh脚本:
 ```bash
-curl -O https://github.com/xy-12306/Docker-installation/releases/download/1.5/install_docker.sh  
+wget https://github.com/xy-12306/Docker-installation/releases/download/1.5/install_docker.sh  
 ```
+
+> 如果报错 ` -bash: wget: 未找到命令 `
+> 请输入 ` yum -y install wget ` 下载该组件
+
+* 检查当前目录文件：
+输入 `` ll `` 查看文件下内容
+
+> 当前目录下有两个文件：
+>        anaconda-ks.cfg：系统安装时的 Kickstart 配置文件。
+>        install_docker.sh：下载的 Docker 安装脚本
 
 #### 2. 赋予脚本执行权限
 运行以下命令，赋予脚本可执行权限：
