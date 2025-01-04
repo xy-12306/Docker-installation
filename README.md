@@ -1,68 +1,53 @@
-### 1.切换yum源为阿里
+## 使用方法
 
- 
-```
-curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
-yum makecache   #生成缓存
-```
-
-### 2.CentOS 7（使用 yum 安装docker）
-
- 
-```
-# step 1: 安装必要的一些系统工具
-sudo yum install -y yum-utils
-
-# Step 2: 添加软件源信息
-yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-
-# Step 3: 安装Docker
-sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Step 4: 开启Docker服务并设置开机自启动
-sudo service docker start
-sudo systemctl enable docker
+#### 1. 下载脚本
+下载install_docker.sh脚本:
+```bash
+curl -O https://github.com/xy-12306/Docker-installation/releases/download/1.5/install_docker.sh  # 替换为实际下载链接
 ```
 
-### 3.配置镜像加速地址
-
- 
-```
-sudo mkdir -p /etc/docker
-sudo tee /etc/docker/daemon.json <<-'EOF'
-{
-    "registry-mirrors": [
-        "https://docker.xuanyuan.me",
-        "https://docker.1ms.run",
-        "https://docker.udayun.com",
-        "https://docker.m.daocloud.io",
-        "https://atomhub.openatom.cn"
-        
-    ]
-}
-EOF
-sudo systemctl daemon-reload
-sudo systemctl restart docker
+#### 2. 赋予脚本执行权限
+运行以下命令，赋予脚本可执行权限：
+```bash
+chmod +x install_docker.sh
 ```
 
-* 检查加速是否生效：
-
-> 查看docker系统信息 ,输入 ` docker info ` ，如果从输出结果中看到了 registry mirror 刚配置的内容地址，说明配置成功。
-
-### 4.拉取镜像示例
-
-
-```
-docker pull [镜像名称:版本号]
-
-docker pull mysql:8.0
-
-docker pull nginx:1.27.0
+#### 3. 执行脚本
+运行以下命令，执行脚本：
+```bash
+./install_docker.sh
 ```
 
 ---
 
-参考网页：
-* [CentOS （使用 yum 进行安装）-阿里云开发者社区](https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.57e31b11mZMLg4)
+### 执行过程
 
-* [docker镜像加速地址（国内镜像源）](https://xuanyuan.me/blog/archives/1154?from=tencent)
+脚本会依次执行以下操作：
+1. **切换 yum 源为阿里云**：加快软件包下载速度。
+2. **安装 Docker**：
+   - 安装必要的工具。
+   - 添加 Docker 官方源（阿里云镜像）。
+   - 安装 Docker 及相关组件。
+   - 启动 Docker 服务并设置开机自启。
+3. **配置 Docker 镜像加速**：
+   - 使用多个国内镜像加速地址。
+   - 重启 Docker 服务使配置生效。
+4. **检查镜像加速是否生效**：
+   - 输出 `docker info` 信息，并检查是否包含镜像加速地址。
+
+---
+
+### 注意事项
+
+1. **系统要求**：
+   - 脚本适用于 **CentOS 7** 系统。
+   - 如果使用其他 Linux 发行版（如 Ubuntu），需要调整部分命令。
+
+2. **网络连接**：
+   - 确保服务器可以正常访问外网，以下载必要的软件包。
+
+3. **权限问题**：
+   - 脚本中部分命令需要 root 权限，请使用 `sudo` 或以 root 用户运行。
+
+4. **镜像加速地址**：
+   - 脚本中配置了多个镜像加速地址，如果某个地址不可用，可以手动修改 `/etc/docker/daemon.json` 文件。
