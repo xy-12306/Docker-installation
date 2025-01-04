@@ -3,7 +3,7 @@
 #### 1. 下载脚本
 下载install_docker.sh脚本:
 ```bash
-curl -O https://github.com/xy-12306/Docker-installation/releases/download/1.5/install_docker.sh  # 替换为实际下载链接
+curl -O https://github.com/xy-12306/Docker-installation/releases/download/1.5/install_docker.sh  
 ```
 
 #### 2. 赋予脚本执行权限
