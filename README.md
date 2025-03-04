@@ -3,7 +3,7 @@
 ## 1. 下载脚本
 下载 `install_docker.sh` 脚本：
 ```bash
-wget https://gitee.com/xy12306/Docker/releases/download/v1.8/install_docker.sh
+wget https://gitee.com/xy12306/Docker/releases/download/v2.0/install_docker.sh
 ```
 
 **注意**：若出现报错 ` -bash: wget: 未找到命令 `，请输入以下命令下载该组件：
