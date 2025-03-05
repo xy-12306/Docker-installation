@@ -1,4 +1,23 @@
-# 使用方法
+
+
+## 先检查环境是否满足要求
+
+1.请输入以下命令下载该组件：
+```bash
+yum -y install wget
+```
+
+2.更换yum源为阿里云
+```bash
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+
+yum makecache   #生成缓存
+```
+
+
+# 脚本使用方法
 
 ## 1. 下载脚本
 下载 `install_docker.sh` 脚本：
@@ -6,17 +25,11 @@
 wget https://gitee.com/xy12306/Docker/releases/download/v2.0/install_docker.sh
 ```
 
-**注意**：若出现报错 ` -bash: wget: 未找到命令 `，请输入以下命令下载该组件：
-```bash
-yum -y install wget
-```
+
 
 **检查当前目录文件**：
 输入 `ll` 查看文件内容。
 
-当前目录下有两个文件：
-- `anaconda-ks.cfg`：系统安装时的 Kickstart 配置文件。
-- `install_docker.sh`：下载的 Docker 安装脚本
 
 ## 2. 赋予脚本执行权限
 运行以下命令，赋予脚本可执行权限：
@@ -58,3 +71,8 @@ chmod +x install_docker.sh
     - 脚本中部分命令需要 root 权限，请使用 `sudo` 或以 root 用户运行。
 4. **镜像加速地址**：
     - 脚本中配置了多个镜像加速地址，若某个地址不可用，可手动修改 `/etc/docker/daemon.json` 文件。
+
+---
+参考链接：
+
+* [CentOS 7 环境下的 Docker 安装与配置 详细过程](https://juejin.cn/post/7452652375342874624)
